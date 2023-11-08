@@ -1,0 +1,28 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="win" title="" viewModel="@id('vm') @init('br.edu.unespar.controle.AddEmprestimoIndexVM')" border="normal">
+		<div>
+			<label value="Aluno: " />
+			<combobox model="@load(vm.alunoModel)" selectedItem="@bind(vm.formEmprestimo.aluno)" style="display: block;" autodrop="true">
+			    <template name="model" var="aluno">
+			        <comboitem label="@load(aluno.nome)" />
+			    </template>
+			</combobox>  
+			
+			<label value="Livro: " />
+			<combobox model="@load(vm.livroModel)" selectedItem="@bind(vm.formEmprestimo.livro)" style="display: block;" autodrop="true">
+			    <template name="model" var="livro">
+			        <comboitem label="@load(livro.titulo)" />
+			    </template>
+			</combobox>    
+		
+			<label value="Data de Empréstimo: " />
+			<datebox cols="12" format="dd/MM/yyyy" value="@bind(vm.formEmprestimo.dt_emprestimo)" style="display: block;"/>
+			
+		</div>
+		<div style="padding-top: 20px">
+			<button style="background-color:limegreen" label="Salvar Empréstimo" onClick="@command('salvarEmprestimo',janela=win)" />
+			<button style="background-color:gray" label="Cancelar" onClick="@command('cancelar', janela=win)" />
+		</div>
+	</window>
+</zk>

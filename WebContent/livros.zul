@@ -1,0 +1,39 @@
+<?page title="Livros" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window viewModel="@id('vm') @init('br.edu.unespar.controle.LivroIndexVM')" >
+	
+		<div style="padding-bottom: 30px">
+			<button style="background-color:green" label="Inserir Livro" onClick="@command('addLivroOpenModal')"/>
+		</div>
+	
+		<div>
+			<grid model="@load(vm.listaLivro)">
+				<columns>
+					<column label="ID" />
+					<column label="Título" />
+					<column label="Ano" />
+					<column label="ISBN" />
+					<column label="Status" />
+					<column label="Ações"/>
+				</columns>
+				<template name="model" var="livro">
+					<row style="@load(livro.status_livro eq true ?'background-color:gray':'background-color:limegreen')">
+						<label value="@load(livro.id)"/>
+						<label value="@load(livro.titulo)"/>
+						<label value="@load(livro.ano)"/>
+						<label value="@load(livro.isbn)"/>
+						<label value="@load(livro.status_livro eq true ?'Locado':'Disponível')"/>
+						<div>
+							<button label="Editar" onClick="@command('editarLivroOpenModal', paramLivro=livro)"/>
+							<button style="background-color:red" label="Excluir"/>
+						</div>
+					</row>
+				</template>
+			</grid>			
+		</div>
+		<div style="padding-top: 30px;">
+			<button label="Voltar" href="/"/>
+		</div>
+		<div style="text-align: center;"><label style="font-size: small;">Created By Heverton 2023</label></div>
+	</window>
+</zk>

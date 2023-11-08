@@ -1,0 +1,40 @@
+<?page title="Auto Generated index.zul"?>
+<zk>
+	<window viewModel="@id('vm') @init('br.edu.unespar.controle.EmprestimoIndexVM')" >
+	
+		<div style="padding-bottom: 30px">
+			<button label="Emprestar Livro" onClick="@command('addEmprestimoOpenModal')"/>
+		</div>
+	
+		<div>
+			<grid model="@load(vm.listaEmprestimo)">
+				<columns>
+					<column label="Aluno" />
+					<column label="Livro" />
+					<column label="Data Empréstimo" />
+					<column label="Data Devolução" />
+					<column label="Ações"/>
+				</columns>
+				<template name="model" var="emprestimo">
+					<!-- Expression Language ZK Framework  -->
+					<row style="@load(emprestimo.dt_devolucao eq null ?'background-color:lightblue':'background-color:gray')">
+						<label value="@load(emprestimo.aluno.nome)"/>
+						<label value="@load(emprestimo.livro.titulo)"/>
+						<label value="@load(emprestimo.dt_emprestimo) @converter('formattedDate', format='dd/MM/yyyy')"/>
+						<label value="@load(emprestimo.dt_devolucao) @converter('formattedDate', format='dd/MM/yyyy')"/>
+						<div>
+							<button label="Editar" onClick="@command('editarEmprestimoOpenModal', paramEmprestimo=emprestimo)"/>
+							<button style="background-color:limegreen" label="Devolução" onClick="@command('devolverLivro', paramEmprestimo=emprestimo)"/>
+						</div>
+					</row>
+				</template>
+			</grid>			
+		</div>
+		<div style="padding-top: 30px;">
+			<button label="Cadastrar Aluno" onClick="@command('addAlunoOpenModal')"/>
+			<button style="float: right;" label="Gerir Livros" href="livros.zul"/>
+		</div>
+		<div style="text-align: center;"><label style="font-size: small;">Created By Heverton 2023</label></div>
+	</window>
+	<!--  <label value="@load(emprestimo.dt_devolucao) @converter('formattedNumber', format='R$ ###,##0.00')"/> -->
+</zk>

@@ -1,0 +1,29 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="win" title="" viewModel="@id('vm') @init('br.edu.unespar.controle.AddLivroIndexVM')" border="normal">
+		<div>
+			<label value="Titulo: " />
+			<textbox value="@bind(vm.formLivro.titulo) @save(vm.formLivro.titulo, before='salvarLivro')" style="display: block;" constraint="no empty"/>
+			
+			<label value="Ano: " />
+			<intbox value="@bind(vm.formLivro.ano)" style="display: block;"/>
+		
+			<label value="ISBN: " />
+			<textbox value="@bind(vm.formLivro.isbn)" style="display: block;"/>
+			
+			<label value="Status: " />
+		<!--<checkbox checked="@bind(vm.formLivro.status_livro)" /> -->
+			<radiogroup id="statusLivroRadiogroup" selectedItem="@bind(vm.formLivro.status_livro)" >
+                <hlayout>
+                    <radio id="radioa" label="Emprestado" value="${ true }"/>
+                    <radio id="radiob" label="Disponivel" value="${ false }"/>
+                </hlayout>
+            </radiogroup>
+			
+		</div>
+		<div style="padding-top: 20px">
+			<button style="background-color:limegreen" label="Salvar Livro" onClick="@command('salvarLivro',janela=win)" />
+			<button style="background-color:gray" label="Cancelar" onClick="@command('cancelar', janela=win)" />
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,20 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="win" title="" viewModel="@id('vm') @init('br.edu.unespar.controle.AddAlunoIndexVM')" border="normal">
+		<div>
+			<label value="Nome: " />
+			<textbox value="@bind(vm.formAluno.nome) @save(vm.formAluno.nome, before='salvarAluno')" style="display: block;" constraint="no empty"/>
+			
+			<label value="Matrícula: " />
+			<intbox value="@bind(vm.formAluno.matricula)" style="display: block;"/>
+		
+			<label value="Data de Nascimento: " />
+			<datebox cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" value="@bind(vm.formAluno.dt_nascimento)" style="display: block;"/>
+			
+		</div>
+		<div style="padding-top: 20px">
+			<button style="background-color:limegreen" label="Salvar Aluno" onClick="@command('salvarAluno',janela=win)" />
+			<button style="background-color:gray" label="Cancelar" onClick="@command('cancelar', janela=win)" />
+		</div>
+	</window>
+</zk>
