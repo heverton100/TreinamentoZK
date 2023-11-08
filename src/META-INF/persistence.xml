@@ -8,9 +8,9 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 		<properties>
 			<property name="javax.persistence.provider" value="org.hibernate.jpa.HibernatePersistenceProvider"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://bribgg6nokselaarpzhc-postgresql.services.clever-cloud.com:50013/bribgg6nokselaarpzhc" />
-            <property name="javax.persistence.jdbc.user" value="ujnglsyhdqca32ijclpg" />
-            <property name="javax.persistence.jdbc.password" value="UPJq1ehFMB1CKIFIJBOIUy762MpLqD" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://..." />
+            <property name="javax.persistence.jdbc.user" value="..." />
+            <property name="javax.persistence.jdbc.password" value="..." />
             <property name="connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
 	        <property name="hibernate.c3p0.min_size" value="5" />
 	        <property name="hibernate.c3p0.max_size" value="10" />
